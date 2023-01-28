@@ -1,0 +1,7 @@
+{
+    "compilerOptions": { //tsc 명령어의 부가적인 옵션을 주기위함
+        "allowJs" : true, // Js도 쓰게 한다
+        "checkJs": true,  // js에서 ts 처럼 타입체크하겠다
+        "noImplicitAny": true // 최소한의 타입설정을 any라도 한다
+    }
+}
