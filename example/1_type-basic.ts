@@ -8,6 +8,8 @@ const num: number = 10;
 const arr: Array<string> = [];
 arr.push('hi');
 
+let heroes : Array<string> = ['a','b','c', '10'] // 이렇게 선언할 때 바로 에러를 리턴함
+
 // 배열 - 리터럴 적용
 const items: string[] = [];
 // items.push(10);
