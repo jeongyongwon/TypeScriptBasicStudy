@@ -31,9 +31,10 @@ function fetchUser() {
   return axios.get(url)
 }
 
-fetchUser().then(function(response)) {
-  response.address.city;
-}
+fetchUser().then(function(response) {
+    response.address.city;
+  }
+) 
 
 
 function startApp() {
