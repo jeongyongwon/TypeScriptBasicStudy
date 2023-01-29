@@ -1,27 +1,4 @@
-interface PhoneNumberDictionary {
-  [phone: string]: { //어떤 키값이 오든간에 string으로 받는다
-    num: number;
-  };
-}
-
-interface Contact {
-  name: string;
-  address: string;
-  phones: PhoneNumberDictionary;
-}
-
-/*
-  String을 직접 타이핑하다보면 오타가 발생할 수 있기 때문에
-  속성으로 지정해준다
-
-  고정된 3가지 번호 타입이 있다고 가정하면
-*/
-enum PhoneType {
-  Home = 'home',
-  Office = 'office',
-  Studio = 'studio'
-}
-
+import {PhoneNumberDictionary, Contact, PhoneType} from './types';
 // api
 // TODO: 아래 함수의 반환 타입을 지정해보세요.
 function fetchContacts() : Promise<Array<Contact>> {
