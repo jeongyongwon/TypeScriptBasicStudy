@@ -46,17 +46,18 @@ let obj : StringRegexDictionary= {
 type 선언과의 결정적인 차이는 상속여부이다
 공식문서에서도 interface를 권장하고 있다.
 */
-interface Person {
-    name : string;
-    age : number;
-}
+// interface Person {
+//     name : string;
+//     age : number;
+// }
 
-interface Developer extends Person { // 상속 (Java랑 비슷한듯)
-    language : string;
-}
+// interface Developer extends Person { // 상속 (Java랑 비슷한듯)
+//     language : string;
+// }
 
-let cozy_dev : Developer = {
-    language : 'java',
-    name : 'yongwon',
-    age : 10
-}
+// let cozy_dev : Developer = {
+//     name: 'yongwon',
+//     age: 10,
+//     language: 'java',
+//     skill: ""
+// }
