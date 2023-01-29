@@ -1,5 +1,5 @@
 interface PhoneNumberDictionary {
-  [phone: string]: {
+  [phone: string]: { //어떤 키값이 오든간에 string으로 받는다
     num: number;
   };
 }
@@ -10,16 +10,28 @@ interface Contact {
   phones: PhoneNumberDictionary;
 }
 
+/*
+  String을 직접 타이핑하다보면 오타가 발생할 수 있기 때문에
+  속성으로 지정해준다
+
+  고정된 3가지 번호 타입이 있다고 가정하면
+*/
+enum PhoneType {
+  Home = 'home',
+  Office = 'office',
+  Studio = 'studio'
+}
+
 // api
 // TODO: 아래 함수의 반환 타입을 지정해보세요.
-function fetchContacts() {
+function fetchContacts() : Promise<Array<Contact>> {
   // TODO: 아래 변수의 타입을 지정해보세요.
-  const contacts = [
+  const contacts : Array<Contact> = [
     {
       name: 'Tony',
       address: 'Malibu',
       phones: {
-        home: {
+        home: { // [phone: string] 부분
           num: 11122223333,
         },
         office: {
@@ -57,10 +69,11 @@ function fetchContacts() {
 // main
 class AddressBook {
   // TODO: 아래 변수의 타입을 지정해보세요.
-  contacts = [];
+  contacts : Array<Contact> = [];
 
   constructor() {
     this.fetchData();
+    // findContactByPhone(1000, PhoneType.Home);
   }
 
   fetchData() {
@@ -70,29 +83,32 @@ class AddressBook {
   }
 
   /* TODO: 아래 함수들의 파라미터 타입과 반환 타입을 지정해보세요 */
-  findContactByName(name) {
+  findContactByName(name : string)  : Array<Contact> {
     return this.contacts.filter(contact => contact.name === name);
   }
 
-  findContactByAddress(address) {
+  findContactByAddress(address : string) : Array<Contact> {
     return this.contacts.filter(contact => contact.address === address);
   }
 
-  findContactByPhone(phoneNumber, phoneType: string) {
+  // phoneType 은 string으로 넣다보니 오타가 발생할 수 있다.
+  // PhoneType 은 3가지로 제한되어있기 때문에 사용한다
+  // enum을 쉽게 생각하면 해당 타입 안에 있는 key들 중 하나가 매칭 되는 value 제한걸어버리겠다는 의미
+  findContactByPhone(phoneNumber : number, phoneType: PhoneType) : Array<Contact> {
     return this.contacts.filter(
       contact => contact.phones[phoneType].num === phoneNumber
     );
   }
 
-  addContact(contact) {
+  addContact(contact : Contact) {
     this.contacts.push(contact);
   }
 
-  displayListByName() {
+  displayListByName() : Array<string> {
     return this.contacts.map(contact => contact.name);
   }
 
-  displayListByAddress() {
+  displayListByAddress() : Array<string> {
     return this.contacts.map(contact => contact.address);
   }
   /* ------------------------------------------------ */
