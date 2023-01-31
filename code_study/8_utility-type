@@ -1,0 +1,92 @@
+interface Product1 {
+  id: number;
+  name: string;
+  price: number;
+  brand: string;
+  stock: number;
+}
+
+interface Product2 {
+    id: number;
+    name?: string;
+    price?: number;
+    brand: string;
+    stock: number;
+}
+
+
+/*
+    Partial Type
+    말 그대로 부분 집합의 의미를 가지고
+    인터페이스를 생성할 때 부분 만족하여 생성가능하다
+*/
+let proNormal : Product1 = {
+    id: 1,
+    name: "test",
+    price: 10000,
+    brand: "A",
+    stock: 2
+};
+
+let proPartial : Partial<Product1> = {
+    id : 10,
+    price : 20
+};
+
+/*
+    Required Type
+    Partial Type과 반대되는 개념이고
+    Optional field가 있더라도 모든 field로  선언하게 만듬
+    
+    사용할 상황이 많을지 아직 감이 안옴
+*/
+let proNormal2 : Required<Product2> = {
+    id: 1,
+    name: "test",
+    price: 10000,
+    brand: "A",
+    stock: 2
+};
+
+/*
+    Readonly Type
+    말 그대로 수정 없이 읽을 수만 있는 타입
+    공지사항 같은거에 쓰면 좋을듯 하다
+*/
+let proReadonly : Readonly<Product2> = {
+    id: 1,
+    name: "test",
+    price: 10000,
+    brand: "A",
+    stock: 2
+};
+
+/*
+    Pick Type
+    Pick<Type, Keys>
+    선택된 필드만 세팅해도됨
+
+    Omit Type은 반대로 누락시키는 필드만 적음
+ */
+interface Comment {
+    name: string;
+    comment: string;
+    reg_dt : string;
+};
+
+interface Comment2 {
+    name: string;
+    comment: string;
+    reg_dt : string;
+};
+
+
+let comment1 : Pick<Comment, "name" | "comment"> ={
+name : "goodboy",
+comment : "good"
+}
+
+let comment2 : Omit<Comment2, "name" | "comment"> ={
+reg_dt : "good"
+};
+
